@@ -1,0 +1,356 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-size: 2vh;
+}
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 2%;
+    font-family: Roboto, sans-serif;
+    background-color: black;
+    color: whitesmoke;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/bg1.jpg');
+    background-size: cover;
+}
+
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+    font-family: Flaticon;
+    font-size: 2rem;
+    font-style: normal;
+    margin: 0 .5rem 0 .5rem;
+}
+
+#logo {
+    position: absolute;
+    height: 6rem;
+    bottom: 1.5rem;
+    right: 2rem;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+.App {
+    /* background-color: bisque; */
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0;
+}
+
+.user-profile {
+    /* background-color:burlywood; */
+    position: relative;
+    height: 20%;
+    display: block;
+}
+
+.post {
+    /* background-color: greenyellow; */
+    box-sizing: border-box;
+    display: block;
+    position: relative;
+    height: 100%;
+    padding: 0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+            animation: fadein 2s;
+
+}
+
+.user-picture {
+    /* background-color: coral; */
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    background-size: contain;
+    border-radius: 4.5rem;
+    margin: auto;
+    left: 2rem;
+    top:0; bottom:0;
+    vertical-align: middle;
+}
+
+.user-info {
+    /* background-color: chartreuse; */
+    position: absolute;
+    display: inline-block;
+    left: 12rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 8rem;
+}
+
+.user-name {
+    /* background-color: aquamarine; */
+    display: block;
+    font-size: 3em;
+    font-weight: bold;
+    padding: .2rem;
+    font-family: Oswald;
+}
+
+.user-screen-name {
+    /* background-color: bisque; */
+    display: block;
+    font-weight: bold;
+    color: #FFFF99;
+    padding: .0rem;
+    font-size: 2.3em;
+}
+
+.content {
+    /* background-color: blueviolet; */
+    box-sizing: border-box;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;    
+    display: inline-block;
+    padding: 0;
+    position: relative;
+}
+
+.with-media .content {
+    width: 46.8%;
+}
+
+.text-wrapper {
+    /* background-color: chocolate; */
+    box-sizing: border-box;
+    height: 53%;
+    display: block;
+    font-size: 2.3em;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-word;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.with-media .text-wrapper {
+    font-size: 1.7em;
+}
+
+.text-ratio {
+    /* background-color: #333; */
+    height: 100%;
+    display: inline-table;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.with-media .text-ratio {
+    padding-right: 1rem;
+}
+
+.post-text {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.media {
+    /* background-color: darkolivegreen; */
+    box-sizing: border-box;
+    vertical-align: top;
+    display: inline-block;
+    width: 53.2%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: .15rem solid rgb(240, 197, 231);
+    position: relative;
+    border-radius: 1rem;
+}
+
+.mediaThumb .overlay {
+    position: relative;
+}
+
+.media .playWrapper {
+    opacity: .7;
+    position: absolute; z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3) url("images/play-button.png") no-repeat scroll center center / 14rem 14rem;
+    border-radius: 1rem;
+}
+
+.info-container {
+    /* background-color: aqua; */
+    box-sizing: border-box;
+    display: inline-block;
+    height: 10.6rem;
+    width: 30rem;
+    font-size: 2.3rem;
+    position: absolute;
+    bottom: 0;
+    left: 2rem;
+    margin: 0;
+    /* overflow: hidden; */
+}
+
+.info-box {
+    display: table;
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 1rem;
+    padding: .5rem 3rem .5rem .5rem;
+    overflow: hidden;
+    color: #333;
+    width: 24rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* position: relative; */
+}
+
+.info {
+    /* background-color: #FFFF99; */
+    display: table-cell;
+    /* position: absolute; */
+    top: 0;
+    bottom: 0;
+    /* left: 10rem; */
+    text-align: center;
+    margin: auto;
+    height: 5rem;
+    /* width: 30rem; */
+    vertical-align: middle;
+}
+
+.hashtag {
+    font-style: italic;
+    color: #FFFF99;
+}
+
+.mention {
+    font-weight: bold;
+    color: #FFFF99;
+}
+
+.text-wrapper a {
+    text-decoration: none;
+    color: #B9D0FF;
+}
+
+.qrcode-container {
+    display: table-cell;
+    background-color: white;
+    padding: .5rem .5rem 0rem .5rem;
+}
+
+.created-at {
+    /* margin-left: .5rem; */
+    font-size: 2rem;
+    font-style: italic;
+    color: #7e7e7e;
+}
+
+.stats {
+    font-weight: bold;
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+    color: #6d6d6d;
+}
+
+.portrait {
+    display: none !important;
+}
+
+@media screen and (orientation:portrait) {
+
+    #logo {
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .landscape {
+        display: none !important;
+    }
+
+    .portrait {
+        display: inherit !important;
+    }
+
+    html {
+        font-size: 2vw;
+    }
+
+    .user-profile {
+        height: 11%;
+    }
+
+    .post {
+        box-sizing: border-box;
+        height: 87.5%;
+    }
+
+    .content {
+        display: block;
+        height: 100%;
+        width: 100%;
+    }
+
+    .with-media .content {
+        height: 39%;
+        width: 100%;
+    }
+
+    .media {
+        box-sizing: border-box;
+        margin-top: 2%;
+        width: 100%;
+        height: 61.5%;
+        display: block;
+    }
+
+    .text-wrapper {
+        height: 20%;
+        padding-right: 0;
+    }
+
+    .with-media .text-wrapper {
+        height: 60%;
+        font-size: 1.3rem;
+    }
+
+    .info-container {
+        left: 0; 
+    }
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.debug {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .5);
+    font-size: 2rem;
+    z-index: 1000;
+    display: none;
+}

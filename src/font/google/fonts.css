@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'),
+        url(Oswald_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8A.woff */
+        url(Oswald_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8Dl-1PKw.ttf */
+        url(Oswald_400_normal.svg#Oswald_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=TK3iWkUHHAIjg752GT8B&skey=653237e53512d0de&v=v16#Oswald */
+}
+@font-face {
+    font-family: 'Oswald';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'),
+        url(Oswald_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8A.woff */
+        url(Oswald_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/oswald/v16/TK3iWkUHHAIjg752GT8Dl-1PKw.ttf */
+        url(Oswald_400_normal.svg#Oswald_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=TK3iWkUHHAIjg752GT8B&skey=653237e53512d0de&v=v16#Oswald */
+}
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'),
+        url(Roboto_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxM.woff */
+        url(Roboto_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxPKTU1Kg.ttf */
+        url(Roboto_400_normal.svg#Roboto_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=KFOmCnqEu92Fr1Mu4mxN&skey=a0a0114a1dcab3ac&v=v18#Roboto */
+}
