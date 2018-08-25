@@ -29,13 +29,13 @@ class Posts extends Component {
     }
 
     render() {
-        const { user, posts } = this.props;
+        const { user, posts, pageDuration } = this.props;
         const { index } = this.state;
 
         if (index === -1) return null;
 
         return (
-            <Post key={index} {...posts[index]} user={user} />
+            <Post key={index} duration={pageDuration} {...posts[index]} user={user} />
         );
     }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Info from './info';
 import UserProfile from './user-profile';
+import MediaSlider from './media-slider';
 import { tval } from '../util/template';
 
 const hashtagColor = tval('hashtag_color', '#FFFF99');
@@ -9,6 +10,17 @@ const mentionColor = tval('mention_color', '#FFFF99');
 const phoneColor = tval('phone_color', '#FFFF99');
 const primaryColor = tval('primary_color', 'white');
 const textColor = tval('text_color', primaryColor);
+
+const settings = {
+    dots: false,
+    arrows: false,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000
+};
 
 function highlight(text = '') {
     const hashtagRegex = /(#[^\s]+)/g;
@@ -61,19 +73,17 @@ const PostMedia = ({
     urls: {
         md: url,
     },
-    className,
 }) => (
-    <div className={`media ${className}`} style={{ backgroundImage: `url("${url}")`}}>
+    <div className="media" style={{ backgroundImage: `url("${url}")`}}>
         { type === 'video' && <div className="playWrapper"/> }
     </div>
 );
 
-
-
 function Post({
     text = '',
-    media,
+    media = [],
     user,
+    duration,
     ...info
 }) {
 
@@ -102,11 +112,14 @@ function Post({
 
     // console.log('length:', text.length, textLength, 'ratio:', ratio);
 
+    const maxMediaToShow = Math.min(media.length, Math.max(1, Math.floor(duration / 1000)));
+
     return (
         <div className={`post ${withMedia ? 'with-media' : ''}`}>
             <UserProfile className="portrait" {...user} />
 
-            { withMedia && <PostMedia {...media[0]} className="" /> }
+            { withMedia && media[0].type === 'image' && media.length > 1 && <MediaSlider media={media.slice(0, maxMediaToShow)} duration={Math.floor(duration / maxMediaToShow)} /> }
+            { (withMedia && (media[0].type === 'video' || media.length === 1 )) && <PostMedia {...media[0]} /> }
             
             <div className="content">
             
