@@ -27,11 +27,21 @@ body {
     margin: 0 .5rem 0 .5rem;
 }
 
-#logo {
+.logo {
     position: absolute;
-    height: 6rem;
-    bottom: 1.5rem;
-    right: 2rem;
+    height: 6em;
+    bottom: 1.5em;
+    right: 2em;
+}
+
+.no-info .logo {
+    position: absolute;
+    height: 3em;
+    bottom: 0rem;
+    left: 0;
+    border-radius: .6em;
+    box-shadow: 0 0 1em .2em #FFF;
+    -webkit-box-shadow: 0 0 1em .2em #FFF;
 }
 
 #root {
@@ -69,12 +79,12 @@ body {
 .user-picture {
     /* background-color: coral; */
     position: absolute;
-    width: 9rem;
-    height: 9rem;
+    width: 9em;
+    height: 9em;
     background-size: contain;
-    border-radius: 4.5rem;
+    border-radius: 4.5em;
     margin: auto;
-    left: 2rem;
+    left: 2em;
     top:0; bottom:0;
     vertical-align: middle;
 }
@@ -120,7 +130,7 @@ body {
 }
 
 .with-media .content {
-    width: 46.8%;
+    width: 44.9%;
 }
 
 .text-wrapper {
@@ -137,6 +147,15 @@ body {
     word-break: break-word;
     text-align: center;
     text-overflow: ellipsis;
+}
+
+.no-info .text-wrapper {
+    height: 77%;
+    font-size: 2.6em;
+}
+
+.no-info .with-media .text-wrapper {
+    font-size: 2.2em;
 }
 
 .with-media .text-wrapper {
@@ -165,7 +184,7 @@ body {
     box-sizing: border-box;
     vertical-align: top;
     display: inline-block;
-    width: 53.2%;
+    width: 55.1%;
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -190,12 +209,18 @@ body {
 }
 
 .media-item {
+    position: relative;
     display: inline-block;
     width: 50%;
     height: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat
+}
+
+.photo-overlay {
+    position: absolute;
+    height: 11em;
 }
 
 .mediaThumb .overlay {
@@ -299,7 +324,7 @@ body {
 
 @media screen and (orientation:portrait) {
 
-    #logo {
+    .logo {
         right: 1rem;
         bottom: 1rem;
     }
@@ -347,6 +372,15 @@ body {
     .text-wrapper {
         height: 20%;
         padding-right: 0;
+    }
+
+    .no-info .text-wrapper {
+        font-size: 2.6em;
+    }
+    
+    .no-info .with-media .text-wrapper {
+        height: 100%;
+        font-size: 2.2em;
     }
 
     .with-media .text-wrapper {

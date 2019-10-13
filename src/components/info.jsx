@@ -9,7 +9,6 @@ import 'moment/locale/de';
 
 function Info({
     link = 'https://dsplay.tv',
-    likes = 0,
     comments = 0,
     created = new Date().toDateString(),
     className = '',
@@ -38,8 +37,6 @@ function Info({
                     <span className="created-at">{moment(created).format('HH:mm:ss')}</span>
                     <div className="stats">
                         <i className="flaticon-comment-white-oval-bubble"></i>{comments}
-                        &nbsp;&nbsp;
-                        <i className="flaticon-heart-outline"></i>{likes}
                     </div>
                 </div>
             </div>

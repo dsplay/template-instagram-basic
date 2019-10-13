@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
+import { tval, tbval } from '@dsplay/template-utils';
 import Posts from './components/posts';
 import logo from './images/ig-logo.png';
-import { tval, tbval } from './util/template';
 
 const { orientation } = window.dsplay_config || window.config;
 
 // one time template config
 const horizontalBackground = tval('bg_horizontal');
 const verticalBackground = tval('bg_vertical');
+const showLogo = tbval('show_instagram_icon', true);
+const showInfo = tbval('show_info', true);
 
 if (horizontalBackground) {
     document.body.style.backgroundImage = `url("${horizontalBackground}")`;
@@ -26,10 +27,6 @@ class App extends Component {
 
         const primaryColor = tval('primary_color', 'white');
         document.body.style.color = primaryColor;
-
-        if (!tbval('show_instagram_icon', true)) {
-            document.querySelector('#logo').style.display = 'none';
-        }
     }
 
     render() {
@@ -61,8 +58,11 @@ class App extends Component {
         // console.log(pageDuration);
 
         return (
-            <div className="App">
-                <img id="logo" src={logo}/>
+            <div className={`App ${ showInfo ? '' : 'no-info'}`}>
+                {
+                    showLogo && showInfo &&
+                    <img className="logo" alt="logo" src={logo}/>
+                }
                 <div className="debug">{orientation}({width}x{height})</div>
                 <Posts user={user} posts={selectedPosts} pageDuration={pageDuration}/>
             </div>

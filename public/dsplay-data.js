@@ -8,17 +8,21 @@ var template = {
     // bg_horizontal: '../test-data/bg-instagram.jpg',
     // bg_vertical: '../test-data/bg-instagram.jpg',
     // show_instagram_icon: 'false',
-    // primary_color: '#EA0',
-    // secondary_color: '#AB0',
-    // hashtag_color: 'red',
-    // mention_color: 'blue',
-    // phone_color: 'lightblue',
+    // show_info: 'false',
+    primary_color: '#000',
+    secondary_color: '#51a8b1',
+    // hashtag_color: '#f58634',
+    // mention_color: '#51a8b1',
+    // phone_color: '#51a8b1',
     // user_full_name_color: 'pink',
-    // user_screen_name_color: 'yellow',
+    user_screen_name_color: '',
     // text_color: 'gray',
+    border_color: '#AAA',
+    // overlay_position: 'bottom-left',
+
 };
 
 var config = {
     locale: 'pt_br',
-    osVersion: 16,
+    // osVersion: 16,
 };

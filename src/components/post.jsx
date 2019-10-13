@@ -1,26 +1,46 @@
 import React from 'react';
+import { tval, tbval } from '@dsplay/template-utils';
 import Info from './info';
 import UserProfile from './user-profile';
 import MediaSlider from './media-slider';
-import { tval } from '../util/template';
 
-const hashtagColor = tval('hashtag_color', '#FFFF99');
-const linkColor = tval('link_color', '#B9D0FF');
-const mentionColor = tval('mention_color', '#FFFF99');
-const phoneColor = tval('phone_color', '#FFFF99');
 const primaryColor = tval('primary_color', 'white');
+const secondaryColor = tval('secondary_color', '#FFFF99');
+const hashtagColor = tval('hashtag_color', secondaryColor);
+const linkColor = tval('link_color', '#B9D0FF');
+const mentionColor = tval('mention_color', secondaryColor);
+const phoneColor = tval('phone_color', secondaryColor);
 const textColor = tval('text_color', primaryColor);
+const showInfo = tbval('show_info', true);
+const borderColor = tval('border_color', secondaryColor);
+const overlay = tval('overlay');
+const overlayPosition = tval('overlay_position', 'top-left');
 
-const settings = {
-    dots: false,
-    arrows: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000
-};
+const overlayStyle = {
+    'top-right': {
+        top: 0,
+        right: 0,
+    },
+    'bottom-right': {
+        bottom: 0,
+        right: 0,
+    },
+    'bottom-left': {
+        bottom: 0,
+        left: 0,
+    },
+    'top-left': {
+        top: 0,
+        left: 0,
+    },
+    'center': {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        margin: 'auto',
+    },
+}
 
 function highlight(text = '') {
     const hashtagRegex = /(#[^\s]+)/g;
@@ -63,7 +83,7 @@ function PostContent({
                     <div style={{ color: textColor }} className="post-text" dangerouslySetInnerHTML={{ __html: highlight(text) }} />
                 </div>
             </div> 
-            <Info {...info} />
+            { showInfo && <Info {...info} /> }
         </React.Fragment>
     );
 }
@@ -74,8 +94,9 @@ const PostMedia = ({
         md: url,
     },
 }) => (
-    <div className="media" style={{ backgroundImage: `url("${url}")`}}>
+    <div className="media" style={{ borderColor: borderColor, backgroundImage: `url("${url}")` }}>
         { type === 'video' && <div className="playWrapper"/> }
+        { overlay && <img alt="overlay" className="photo-overlay" src={overlay} style={{ ...overlayStyle[overlayPosition] }}/> }
     </div>
 );
 
