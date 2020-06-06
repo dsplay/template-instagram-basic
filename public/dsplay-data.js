@@ -18,7 +18,8 @@ var template = {
     user_screen_name_color: '',
     // text_color: 'gray',
     border_color: '#AAA',
-    // overlay_position: 'bottom-left',
+    overlay: '../test-data/bg-instagram.jpg',
+    overlay_position: 'bottom-left',
 
 };
 
