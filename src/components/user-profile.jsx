@@ -11,10 +11,13 @@ const fullNameColor = tval('user_full_name_color', primaryColor);
 const secondaryColor = tval('secondary_color', '#FFFF99');
 const screenNameColor = tval('user_screen_name_color', secondaryColor);
 
+const defaultPic = tval('profile_picture');
+const defaultUserScreenName = tval('user_screen_name');
+
 function UserProfile({
-    name,
+    name = defaultUserScreenName,
     username,
-    pic,
+    pic = defaultPic,
     className,
 }) {
     return (

@@ -81,7 +81,8 @@ body {
     position: absolute;
     width: 9em;
     height: 9em;
-    background-size: contain;
+    background-size: cover;
+    background-position: center;
     border-radius: 4.5em;
     margin: auto;
     left: 2em;

@@ -20,7 +20,8 @@ var template = {
     border_color: '#AAA',
     overlay: '../test-data/bg-instagram.jpg',
     overlay_position: 'bottom-left',
-
+    user_screen_name: 'Frank Castle',
+    profile_picture: '../test-assets/punisher.jpg'
 };
 
 var config = {
