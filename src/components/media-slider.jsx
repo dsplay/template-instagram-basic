@@ -80,7 +80,7 @@ class MediaSlider extends Component {
                         {/* s: {sliding.toString()}<br/>
                         img1: {img1}<br/>
                         img2: {img2} */}
-                        { overlay && <img alt="overlay" className="photo-overlay" style={{ ...overlayStyle[overlayPosition] }} src={overlay}/> }
+                        { overlay && <img alt="" className="photo-overlay" style={{ ...overlayStyle[overlayPosition] }} src={overlay}/> }
                     </div>
                     {
                         media.length > 1 &&
@@ -88,7 +88,7 @@ class MediaSlider extends Component {
                             {/* s: {sliding.toString()}<br/>
                             img1: {img1}<br/>
                             img2: {img2} */}
-                            { overlay && <img alt="overlay" className="photo-overlay" style={{ ...overlayStyle[overlayPosition] }} src={overlay}/> }
+                            { overlay && <img alt="" className="photo-overlay" style={{ ...overlayStyle[overlayPosition] }} src={overlay}/> }
                         </div>
                     }
                 </div>
