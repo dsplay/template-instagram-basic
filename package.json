@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@dsplay/template-utils": "^0.1.4",
-    "moment": "^2.27.0",
+    "@dsplay/template-utils": "^1.2.5",
+    "moment": "^2.29.4",
     "qrcode.react": "^0.8.0",
-    "react": "^16.13.1",
+    "react": "^16.14.0",
     "react-app-polyfill": "^1.0.6",
-    "react-dom": "^16.13.1",
-    "react-scripts": "^3.4.2"
+    "react-dom": "^16.14.0",
+    "react-scripts": "^3.4.4"
   },
   "scripts": {
     "start": "react-scripts start",

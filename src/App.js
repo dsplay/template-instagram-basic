@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { tval, tbval } from '@dsplay/template-utils';
+import { config, media, isVertical, tval, tbval } from '@dsplay/template-utils';
 import Posts from './components/posts';
 import logo from './images/ig-logo.png';
-
-const { orientation } = window.dsplay_config || window.config;
 
 // one time template config
 const horizontalBackground = tval('bg_horizontal');
@@ -13,7 +11,7 @@ const showInfo = tbval('show_info', true);
 
 if (horizontalBackground) {
     document.body.style.backgroundImage = `url("${horizontalBackground}")`;
-    if (verticalBackground && orientation === 'portrait') {
+    if (verticalBackground && isVertical) {
         document.body.style.backgroundImage = `url("${verticalBackground}")`;    
     }
 } else if (verticalBackground) {
@@ -40,13 +38,13 @@ class App extends Component {
             },
             duration,
             postCount = Math.max(1, Math.floor(duration / 10000)),
-        } = window.media;
+        } = media;
 
         const {
             orientation,
             width,
             height,
-        } = window.config;
+        } = config;
 
         // console.log(postCount);
 
