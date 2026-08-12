@@ -18,15 +18,6 @@ body {
     background-size: cover;
 }
 
-
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
-    font-family: Flaticon;
-    font-size: 2rem;
-    font-style: normal;
-    margin: 0 .5rem 0 .5rem;
-}
-
 .logo {
     position: absolute;
     height: 6em;
@@ -224,10 +215,6 @@ body {
     height: 11em;
 }
 
-.mediaThumb .overlay {
-    position: relative;
-}
-
 .media .playWrapper {
     opacity: .7;
     position: absolute; z-index: 1;
@@ -308,15 +295,6 @@ body {
     font-size: 2rem;
     font-style: italic;
     color: #7e7e7e;
-}
-
-.stats {
-    font-weight: bold;
-}
-
-[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
-    color: #6d6d6d;
 }
 
 .portrait {

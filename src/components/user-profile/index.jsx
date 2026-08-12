@@ -1,6 +1,5 @@
-import React from 'react';
 import { tval, tbval } from '@dsplay/template-utils';
-import logo from '../images/ig-logo.png';
+import logo from '../../images/ig-logo.png';
 
 const showLogo = tbval('show_instagram_icon', true);
 const showInfo = tbval('show_info', true);
@@ -21,7 +20,6 @@ function UserProfile({
   className,
   noPic,
 }) {
-
   const finalName = name || defaultUserScreenName;
   const finalPic = noPic ? defaultPic : pic;
 
@@ -29,16 +27,19 @@ function UserProfile({
     <div className={`user-profile ${className}`}>
       <div className="user-picture" style={{ backgroundImage: `url("${finalPic}")` }}>
         {
-          showLogo && !showInfo &&
-          <img className="logo" alt="logo" src={logo} />
+          showLogo && !showInfo
+          && <img className="logo" alt="logo" src={logo} />
         }
       </div>
       <div className="user-info">
         <span className="user-name" style={{ color: fullNameColor }}>{finalName}</span>
-        <span className="user-screen-name" style={{ color: screenNameColor }}>@{username}</span>
+        <span className="user-screen-name" style={{ color: screenNameColor }}>
+          @
+          {username}
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
 export default UserProfile;
