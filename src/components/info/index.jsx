@@ -7,7 +7,7 @@ import 'moment/locale/es';
 import 'moment/locale/de';
 import 'moment/locale/it';
 import 'moment/locale/nl';
-import { config } from '@dsplay/template-utils';
+import { useConfig } from '@dsplay/react-template-utils';
 
 function Info({
   link = 'https://dsplay.tv',
@@ -15,7 +15,7 @@ function Info({
   className = '',
 }) {
   moment.locale('en');
-  const { locale, osVersion } = config;
+  const { locale, osVersion } = useConfig();
 
   const w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   const h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);

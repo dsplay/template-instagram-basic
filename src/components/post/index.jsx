@@ -1,20 +1,8 @@
 import { Fragment } from 'react';
-import { tval, tbval } from '@dsplay/template-utils';
+import { useTemplateVal, useTemplateBoolVal } from '@dsplay/react-template-utils';
 import Info from '../info';
 import UserProfile from '../user-profile';
 import MediaSlider from '../media-slider';
-
-const primaryColor = tval('primary_color', 'white');
-const secondaryColor = tval('secondary_color', '#FFFF99');
-const hashtagColor = tval('hashtag_color', secondaryColor);
-const linkColor = tval('link_color', '#B9D0FF');
-const mentionColor = tval('mention_color', secondaryColor);
-const phoneColor = tval('phone_color', secondaryColor);
-const textColor = tval('text_color', primaryColor);
-const showInfo = tbval('show_info', true);
-const borderColor = tval('border_color', secondaryColor);
-const overlay = tval('overlay');
-const overlayPosition = tval('overlay_position', 'top-left');
 
 const overlayStyle = {
   'top-right': {
@@ -42,7 +30,9 @@ const overlayStyle = {
   },
 };
 
-function highlight(text = '') {
+function highlight(text = '', {
+  hashtagColor, linkColor, mentionColor, phoneColor,
+}) {
   let result = text;
 
   const hashtagRegex = /(#[^\s]+)/g;
@@ -67,13 +57,16 @@ function PostContent({
   text,
   info,
   ratio,
+  showInfo,
+  textColor,
+  highlightColors,
 }) {
   return (
     <Fragment>
       <div className="text-wrapper" key={id}>
         <div className="text-ratio" style={{ fontSize: `${ratio}em` }}>
           {/* eslint-disable-next-line react/no-danger -- template text may contain highlighted hashtags/links/mentions */}
-          <div style={{ color: textColor }} className="post-text" dangerouslySetInnerHTML={{ __html: highlight(text) }} />
+          <div style={{ color: textColor }} className="post-text" dangerouslySetInnerHTML={{ __html: highlight(text, highlightColors) }} />
         </div>
       </div>
       { showInfo && <Info {...info} /> }
@@ -86,6 +79,9 @@ function PostMedia({
   urls: {
     md: url,
   },
+  borderColor,
+  overlay,
+  overlayPosition,
 }) {
   return (
     <div className="media" style={{ borderColor, backgroundImage: `url("${url}")` }}>
@@ -102,6 +98,18 @@ function Post({
   duration,
   ...info
 }) {
+  const primaryColor = useTemplateVal('primary_color', 'white');
+  const secondaryColor = useTemplateVal('secondary_color', '#FFFF99');
+  const hashtagColor = useTemplateVal('hashtag_color', secondaryColor);
+  const linkColor = useTemplateVal('link_color', '#B9D0FF');
+  const mentionColor = useTemplateVal('mention_color', secondaryColor);
+  const phoneColor = useTemplateVal('phone_color', secondaryColor);
+  const textColor = useTemplateVal('text_color', primaryColor);
+  const showInfo = useTemplateBoolVal('show_info', true);
+  const borderColor = useTemplateVal('border_color', secondaryColor);
+  const overlay = useTemplateVal('overlay');
+  const overlayPosition = useTemplateVal('overlay_position', 'top-left');
+
   const withMedia = media && media.length > 0;
 
   const sizeMap = {
@@ -132,11 +140,20 @@ function Post({
       <UserProfile className="portrait" {...user} />
 
       { withMedia && media[0].type === 'image' && media.length > 1 && <MediaSlider media={media.slice(0, maxMediaToShow)} duration={Math.floor(duration / maxMediaToShow)} /> }
-      { (withMedia && (media[0].type === 'video' || media.length === 1)) && <PostMedia {...media[0]} /> }
+      { (withMedia && (media[0].type === 'video' || media.length === 1)) && <PostMedia {...media[0]} borderColor={borderColor} overlay={overlay} overlayPosition={overlayPosition} /> }
 
       <div className="content">
         <UserProfile className="landscape" {...user} />
-        <PostContent text={text} info={info} ratio={ratio} />
+        <PostContent
+          text={text}
+          info={info}
+          ratio={ratio}
+          showInfo={showInfo}
+          textColor={textColor}
+          highlightColors={{
+            hashtagColor, linkColor, mentionColor, phoneColor,
+          }}
+        />
       </div>
     </div>
   );

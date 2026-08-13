@@ -1,10 +1,5 @@
 import { Component } from 'react';
-import { tval } from '@dsplay/template-utils';
-
-const secondaryColor = tval('secondary_color', 'rgb(240, 197, 231)');
-const borderColor = tval('border_color', secondaryColor);
-const overlay = tval('overlay');
-const overlayPosition = tval('overlay_position', 'top-left');
+import { useTemplateVal } from '@dsplay/react-template-utils';
 
 const overlayStyle = {
   'top-right': {
@@ -32,7 +27,7 @@ const overlayStyle = {
   },
 };
 
-class MediaSlider extends Component {
+class MediaSliderBase extends Component {
   state = {
     sliding: false,
     img1: 0,
@@ -68,7 +63,7 @@ class MediaSlider extends Component {
   };
 
   render() {
-    const { media = [] } = this.props;
+    const { media = [], borderColor, overlay, overlayPosition } = this.props;
     const { sliding, img1, img2 } = this.state;
 
     return (
@@ -89,6 +84,15 @@ class MediaSlider extends Component {
       </div>
     );
   }
+}
+
+function MediaSlider(props) {
+  const secondaryColor = useTemplateVal('secondary_color', 'rgb(240, 197, 231)');
+  const borderColor = useTemplateVal('border_color', secondaryColor);
+  const overlay = useTemplateVal('overlay');
+  const overlayPosition = useTemplateVal('overlay_position', 'top-left');
+
+  return <MediaSliderBase {...props} borderColor={borderColor} overlay={overlay} overlayPosition={overlayPosition} />;
 }
 
 export default MediaSlider;

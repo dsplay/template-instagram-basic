@@ -3,8 +3,8 @@ import {
 } from 'vitest';
 import { render, cleanup } from '@testing-library/react';
 
-// @dsplay/template-utils reads window.dsplay_media/dsplay_config at import time,
-// so these must be set before App (and therefore @dsplay/template-utils) is imported.
+// @dsplay/react-template-utils (via @dsplay/template-utils) reads window.dsplay_media/dsplay_config
+// at import time, so these must be set before App (and therefore that hook library) is imported.
 beforeAll(() => {
   window.dsplay_media = {
     duration: 10000,

@@ -1,17 +1,5 @@
-import { tval, tbval } from '@dsplay/template-utils';
+import { useTemplateVal, useTemplateBoolVal } from '@dsplay/react-template-utils';
 import logo from '../../images/ig-logo.png';
-
-const showLogo = tbval('show_instagram_icon', true);
-const showInfo = tbval('show_info', true);
-
-const primaryColor = tval('primary_color', 'white');
-const fullNameColor = tval('user_full_name_color', primaryColor);
-
-const secondaryColor = tval('secondary_color', '#FFFF99');
-const screenNameColor = tval('user_screen_name_color', secondaryColor);
-
-const defaultPic = tval('profile_picture');
-const defaultUserScreenName = tval('user_screen_name');
 
 function UserProfile({
   name,
@@ -20,6 +8,18 @@ function UserProfile({
   className,
   noPic,
 }) {
+  const showLogo = useTemplateBoolVal('show_instagram_icon', true);
+  const showInfo = useTemplateBoolVal('show_info', true);
+
+  const primaryColor = useTemplateVal('primary_color', 'white');
+  const fullNameColor = useTemplateVal('user_full_name_color', primaryColor);
+
+  const secondaryColor = useTemplateVal('secondary_color', '#FFFF99');
+  const screenNameColor = useTemplateVal('user_screen_name_color', secondaryColor);
+
+  const defaultPic = useTemplateVal('profile_picture');
+  const defaultUserScreenName = useTemplateVal('user_screen_name');
+
   const finalName = name || defaultUserScreenName;
   const finalPic = noPic ? defaultPic : pic;
 
