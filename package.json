@@ -34,7 +34,7 @@
     "Android >= 4.4"
   ],
   "devDependencies": {
-    "@dsplay/template-manifest": "^1.0.2",
+    "@dsplay/template-manifest": "^1.0.3",
     "@eslint/js": "^9.39.5",
     "@testing-library/jest-dom": "^7.0.0",
     "@testing-library/react": "^16.3.2",
