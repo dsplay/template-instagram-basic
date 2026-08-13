@@ -177,10 +177,10 @@ var dsplay_template = {
   user_screen_name_color: '',
   // text_color: 'gray',
   border_color: '#AAA',
-  overlay: '../test-data/bg-instagram.jpg',
+  overlay: 'https://ui-avatars.com/api/?name=Daily+Grind&size=256&background=51a8b1&color=fff&bold=true&format=png',
   overlay_position: 'bottom-left',
   user_screen_name: 'Frank Castle',
-  profile_picture: '../test-assets/punisher.jpg'
+  profile_picture: 'https://i.pravatar.cc/300?img=13'
 };
 
 var dsplay_config = {
