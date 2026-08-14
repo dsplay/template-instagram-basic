@@ -35,7 +35,8 @@ build.sh                    <-- zips the Vite build output into template.zip
 - **Every component gets its own folder with an `index.jsx`.** For a simple component, `index.jsx` *is* the component.
 - **Always import a component by its folder, never by reaching into `index`** — `import Post from '../post'`, never `.../post/index`.
 - Enforced automatically by ESLint's `unicorn/filename-case` rule for the naming half of this; the folder+`index.jsx`+import-by-folder structure is not machine-checked, just convention.
-- **Judgment call:** styling is NOT split one-file-per-component here, unlike other templates. `.media`/`.photo-overlay`/`.playWrapper` are genuinely shared between two different components (`post`'s inline `PostMedia` and `media-slider`), and several other rules cross component boundaries the same way. Splitting this mechanically risked silently breaking the cascade with no visual regression test to catch it, so `src/style.css` stays a single global stylesheet. Revisit only with an actual visual check in hand.
+- **Judgment call:** styling is NOT split one-file-per-component here, unlike other templates. `.media`/`.photo-overlay`/`.playWrapper` are genuinely shared between two different components (`post`'s inline `PostMedia` and `media-slider`), and several other rules cross component boundaries the same way. Splitting this mechanically risked silently breaking the cascade with no visual regression test to catch it, so `src/style.sass` stays a single global stylesheet. Revisit only with an actual visual check in hand.
+- `src/style.sass` was converted from `style.css` (mechanical CSS→indented-syntax rewrite, verified with `sass` to compile to identical CSS before switching) to comply with the sass-only rule above. This repo previously had zero real `.sass` files, so `sass` wasn't a devDependency yet — added it (`^1.101.3`, matching every other template) since the build needs it to process indented-syntax files.
 
 ## Runtime model
 
