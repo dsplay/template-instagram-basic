@@ -7,7 +7,7 @@
     "node": "^22.22.2 || ^24.15.0 || >=26.0.0"
   },
   "dependencies": {
-    "@dsplay/react-template-utils": "^5.1.2",
+    "@dsplay/react-template-utils": "^5.2.1",
     "moment": "^2.30.1",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.8",
