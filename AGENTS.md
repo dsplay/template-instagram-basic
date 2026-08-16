@@ -55,7 +55,7 @@ No `react-i18next` here — audited and found **zero static, developer-authored 
 
 ## Package identity
 
-`package.json`'s `"name"` must identify this template, not the boilerplate it was cloned from — see `template-boilerplate-react`'s AGENTS.md for the full convention. This template's is `dsplay-template-instagram-basic` (already correct, no fix needed here).
+`package.json`'s `"name"` must identify this template, not the boilerplate it was cloned from — see [`template-boilerplate-react`](https://github.com/dsplay/template-boilerplate-react)'s AGENTS.md for the full convention. This template's is `dsplay-template-instagram-basic` (already correct, no fix needed here).
 
 ## README structure
 
