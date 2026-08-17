@@ -6,6 +6,16 @@ A [React](https://reactjs.org/) [HTML-based template](https://developers.dsplay.
 
 > Built with [Vite](https://vitejs.dev/), requires Node.js 22.22.2+, 24.15.0+, or 26+ (see `.nvmrc`).
 
+## Supported screen formats
+
+| Landscape | Portrait | Square |
+|-----------|----------|--------|
+| ![Landscape](docs/screenshots/landscape.png) | ![Portrait](docs/screenshots/portrait.png) | ![Square](docs/screenshots/square.png) |
+
+| Horizontal banner | Vertical banner |
+|--------------------|-------------------|
+| ![Horizontal Banner](docs/screenshots/h-banner.png) | ![Vertical Banner](docs/screenshots/v-banner.png) |
+
 ## Template variables
 
 | Key                       | Type    | Default                    | Description                                                                 |
