@@ -46,6 +46,17 @@ build.sh                    <-- zips the Vite build output into template.zip
 - `public/dsplay-data.js` defines `dsplay_media`/`dsplay_config`/`dsplay_template` mock globals used only in **development** (renamed from the legacy unprefixed `media`/`config`/`template` names during this migration — `@dsplay/template-utils` supports both, but every other template uses the prefixed names, so this one now matches). `build.sh` blanks its content in the production build — the DSPLAY Android app injects the real `window.DSPLAY.getData()` before any script runs.
 - `media.result.data.{user,posts}` is the actual Instagram data (fetched server-side, injected as `dsplay_media`); `App` slices `posts` down to `postCount` (or a duration-derived default) and hands them to `Posts`, which advances through them on a `pageDuration` timer.
 
+## Browser/WebView compatibility (Android SDK 23 minimum)
+
+DSPLAY's Android app supports devices back to Android 6.0 (API 23). On locked-down signage hardware that never receives WebView updates via Play Store, the actual JS engine can be stuck around the Chrome ~40-51 era that shipped with that OS generation — not a modern evergreen browser. `@vitejs/plugin-legacy` exists specifically to cover this: it builds a modern ES-module bundle plus a transpiled+polyfilled "legacy" nomodule bundle for anything the `browserslist` target in `package.json` doesn't natively support.
+
+Two things must never regress, or the legacy bundle silently stops protecting old devices while still *looking* correctly configured:
+
+- **`package.json`'s `browserslist` must keep `Chrome >= 45` and `Android >= 4.4`** (alongside the generic `>0.2%`/`not dead`/etc. entries) — dropping these two narrows the resolved target list to whatever's "current" (verify with `npx browserslist`), which silently stops emitting transpiled code for anything old, even though `@vitejs/plugin-legacy` stays nominally wired up.
+- **`vite.config.js`'s `build.minify` must stay `'terser'`, not the default `oxc`** — `oxc`'s minifier has a known bug where it reintroduces `?.`/`??` into the legacy chunk after Babel already expanded them away, silently breaking the one guarantee the legacy build exists to provide.
+
+After touching either of these, verify by actually running `npm run build` and grepping the emitted `build/assets/index-legacy-*.js` for untranspiled arrow functions (`=>`) or real `?.`/`??` usage — a config that looks right can still emit a broken legacy bundle if a dependency version bump reintroduces one of these, so don't assume correctness from the config file alone.
+
 ## Internationalization
 
 No `react-i18next` here — audited and found **zero static, developer-authored UI text**: every visible string (name, handle, caption, hashtags, timestamp) comes from the `dsplay_media`/`dsplay_template` data itself, not from this template's own code. The one localization surface that exists is `moment`'s date formatting in `src/components/info/index.jsx`, driven by `dsplay_config.locale` — its locale imports now cover the same minimum set as every other template (`en, pt, es, it, de, nl`, via `pt-br`/`pt`/`es`/`de`/`it`/`nl` + built-in `en`), where before `it`/`nl` were missing and would have silently fallen back to English.
