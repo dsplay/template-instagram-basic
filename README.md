@@ -40,6 +40,7 @@ A [React](https://reactjs.org/) [HTML-based template](https://developers.dsplay.
 | `user_screen_name`         | string  |                             | Fallback `@handle`, used when a post's own data has no `name`.              |
 
 > Remember to also register these as Template Vars (same name and type) when configuring this template in the DSPLAY CMS.
+> New variable names should use `snake_case` (e.g. `background_color`, not `backgroundColor`) — the DSPLAY CMS Manager auto-generates each variable's label from its key, and snake_case reads more naturally there.
 
 ## Local development
 
