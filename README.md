@@ -65,14 +65,16 @@ To use test assets (images, videos, etc) during development, put them in the `pu
 
 ## Maintaining dependencies
 
-Regular npm dependencies, not vendored files:
+**Dependencies must always be pinned to an exact version** (never `^`, `~` or any other range). `.npmrc` sets `save-exact=true`, so `npm install <pkg>@<version>` pins automatically. It also disables dependency install scripts (`ignore-scripts=true`) and only accepts package versions published at least 3 days ago (`min-release-age=3`), to reduce supply chain risk. None of the current dependencies need a post-install build step; if one ever does, add a `setup` script to `package.json` (`npm install && npm rebuild <package>`) and document it here.
+
+[Dependabot](.github/dependabot.yml) proposes updates weekly, waiting 3 days after a release (7 days for major versions) before opening a PR.
 
 ```sh
-npm outdated
-npm update
+npm outdated                  # see what has newer versions available
+npm install <pkg>@<version>   # bump a dependency (stays pinned)
 ```
 
-For a version outside the declared range (typically a major bump), apply it deliberately and verify `npm start`, `npm run build`, and `npm test` still work before committing.
+Since versions are pinned, `npm update` does nothing; bump each package explicitly (or merge Dependabot's PRs). For a major bump, verify `npm start`, `npm run build`, and `npm test` still work before committing.
 
 ### Commit conventions
 
