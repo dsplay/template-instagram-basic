@@ -107,7 +107,7 @@ Regular npm dependencies, not vendored files — versions are pinned, so bump ex
 
 ### Fixed: `npm run zip` didn't work on Windows at all
 
-`build.sh` (bash + the system `zip` CLI) was the only thing `npm run zip` ran after building — neither ships on Windows, not even under Git Bash (Git for Windows doesn't bundle `zip`/`unzip`). Replaced with `scripts/pack.mjs`, a plain Node script (`fs` + the `archiver` devDependency, pinned to `7.0.1` — the long-established CJS-style `archiver('zip', opts)` API, not `8.x`'s from-scratch ESM rewrite with a very different class-based API and far less real-world mileage) that does the exact same thing (strip `build/test-assets`, write the `dsplay-data.js` placeholder, zip `build/`'s contents flat into `template.zip`) with no OS-specific tooling at all. `npm run zip` now works identically on Windows, macOS and Linux.
+`build.sh` (bash + the system `zip` CLI) was the only thing `npm run zip` ran after building — neither ships on Windows, not even under Git Bash (Git for Windows doesn't bundle `zip`/`unzip`). Replaced with `scripts/pack.mjs`, a plain Node script (`fs` + the `archiver` devDependency, pinned to `8.0.0` — its from-scratch ESM rewrite, `import { ZipArchive } from 'archiver'; new ZipArchive()` instead of `7.x`'s `archiver('zip')` factory, but otherwise the same `directory()`/`file()`/`pipe()`/`finalize()` streaming API) that does the exact same thing (strip `build/test-assets`, write the `dsplay-data.js` placeholder, zip `build/`'s contents flat into `template.zip`) with no OS-specific tooling at all. `npm run zip` now works identically on Windows, macOS and Linux.
 
 ### Known pending bump: ESLint 9 -> 10
 
