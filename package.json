@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@dsplay/react-template-utils": "5.2.1",
-    "moment": "2.30.1",
+    "moment": "2.31.0",
     "qrcode.react": "4.2.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
