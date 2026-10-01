@@ -15,15 +15,13 @@
   },
   "scripts": {
     "start": "vite",
-    "prebuild": "npm run linter",
-    "build": "vite build",
+    "build": "npm run linter && vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
     "linter": "eslint src",
     "linter:fix": "eslint src --fix",
-    "prezip": "npm run build",
-    "zip": "rm -rf build/test-assets && ./build.sh"
+    "zip": "npm run build && rm -rf build/test-assets && ./build.sh"
   },
   "browserslist": [
     ">0.2%",

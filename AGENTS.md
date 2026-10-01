@@ -84,10 +84,12 @@ Skip a numbered section entirely rather than including it empty.
 ## Commands
 
 - `npm start` — dev server (Vite).
-- `npm run build` — production build (runs the linter first via the `prebuild` script).
+- `npm run build` — lints, then builds for production.
 - `npm test` / `npm run test:watch` — Vitest.
 - `npm run linter` / `npm run linter:fix` — ESLint on `src`.
 - `npm run zip` — builds, then runs `build.sh` to produce `template.zip` ready for the [DSPLAY Web Manager](https://manager.dsplay.tv/template/create). `build/` and `template.zip` are gitignored.
+
+`build`/`zip` chain their steps with `&&` directly in the script (`"build": "npm run linter && vite build"`, `"zip": "npm run build && ..."`) rather than `prebuild`/`prezip` lifecycle hooks — `.npmrc`'s `ignore-scripts=true` (see below) silently skips `pre*`/`post*` hooks for `npm run-script` too, not just install scripts, so a `prezip` step would never actually run and `npm run zip` would silently package a stale/missing `build/`. Keep new multi-step scripts explicit for the same reason — don't reach for `pre*`/`post*` naming in this repo.
 
 ## Supply chain hardening
 
