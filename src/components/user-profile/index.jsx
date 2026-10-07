@@ -6,7 +6,6 @@ function UserProfile({
   username,
   pic,
   className,
-  noPic,
 }) {
   const showLogo = useTemplateBoolVal('show_instagram_icon', true);
   const showInfo = useTemplateBoolVal('show_info', true);
@@ -17,11 +16,12 @@ function UserProfile({
   const secondaryColor = useTemplateVal('secondary_color', '#FFFF99');
   const screenNameColor = useTemplateVal('user_screen_name_color', secondaryColor);
 
-  const defaultPic = useTemplateVal('profile_picture');
-  const defaultUserScreenName = useTemplateVal('user_screen_name');
+  // Template values override the account's own Instagram name/picture; empty means "use Instagram".
+  const picOverride = useTemplateVal('profile_picture');
+  const nameOverride = useTemplateVal('user_screen_name');
 
-  const finalName = name || defaultUserScreenName;
-  const finalPic = noPic ? defaultPic : pic;
+  const finalName = nameOverride || name;
+  const finalPic = picOverride || pic;
 
   return (
     <div className={`user-profile ${className}`}>

@@ -36,8 +36,8 @@ A [React](https://reactjs.org/) [HTML-based template](https://developers.dsplay.
 | `text_color`               | string  | `primary_color`            | Caption text color.                                                         |
 | `user_full_name_color`     | string  | `primary_color`            | User display name color.                                                    |
 | `user_screen_name_color`   | string  | `secondary_color`          | User `@handle` color.                                                       |
-| `profile_picture`          | string  |                             | Fallback avatar, used when a post's own `noPic` data is set.                |
-| `user_screen_name`         | string  |                             | Fallback `@handle`, used when a post's own data has no `name`.              |
+| `profile_picture`          | string  |                             | Overrides the account's Instagram profile picture when set.                 |
+| `user_screen_name`         | string  |                             | Overrides the account's Instagram name when set.                            |
 
 > Remember to also register these as Template Vars (same name and type) when configuring this template in the DSPLAY CMS.
 > New variable names should use `snake_case` (e.g. `background_color`, not `backgroundColor`) — the DSPLAY CMS Manager auto-generates each variable's label from its key, and snake_case reads more naturally there.
